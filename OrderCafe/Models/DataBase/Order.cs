@@ -8,16 +8,17 @@ namespace OrderCafe.Models.DataBase
 {
     public class Order
     {
-        [Key]
-        [Display(Name = "ClientName")]
+        [Required] 
         public string ClientName { get; set; }
-        [Display(Name = "PhoneNumber")]
+        [Required]   
         public string PhoneNumber { get; set; }
         public PayMethodos PayMethodos { get; set; }
 
-        [Display(Name = "FirstDish")]
+
+       
         public string FirstDish { get; set; }
-        [Display(Name = "SecondDish")]
+
+      
         public string SecondDish { get; set; }
         public float Price { get; set; }
         public float Amount { get; set; }

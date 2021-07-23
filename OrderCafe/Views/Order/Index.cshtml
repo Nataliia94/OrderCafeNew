@@ -40,41 +40,63 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClientName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PayMethodos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstDish)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SecondDish)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalPrice)
-            </td>
-            <td>
-                <a asp-controller="Order" asp-action="Edit" asp-route-id="@item.ClientName" class=" btn btn-success ">Edit</a>
-                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
-                <a asp-controller="Order" asp-action="Details" asp-route-id="@item.ClientName" class=" btn btn-success ">Deatails</a>
-                @*@Html.ActionLink("Details", "Details", new { id=item.ClientName }) |*@
-                <a asp-controller="Order" asp-action="Delete" asp-route-id="@item.ClientName" class=" btn btn-success ">Delete</a>
-                @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PayMethodos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstDish)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondDish)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    <a asp-controller="Order" asp-action="Edit" asp-route-id="@item.ClientName" class=" btn btn-success ">Edit</a>
+                    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+                    <a asp-controller="Order" asp-action="Details" asp-route-id="@item.ClientName" class=" btn btn-success ">Deatails</a>
+                    @*@Html.ActionLink("Details", "Details", new { id=item.ClientName }) |*@
+                    <a asp-controller="Order" asp-action="Delete" asp-route-id="@item.ClientName" class=" btn btn-success ">Delete</a>
+                    @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous">
+</script>
+
+<script type="text/javascript">
+        $(document).ready(function(){
+            $("input[type=text]").change(function () {
+                CalculateTotal();
+            });
+        });
+
+
+        function CalculateTotal()
+    {
+            let UnitPrice = $("#txtunitPrice").val();
+        let Amount = $("#txtAmount").val();
+        let Total = UnitPrice * Amount;
+        $("#txtTotalPrice").val(parseFloat(Total).toFixed(2));
+    }
+</script>

@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" asp-controller="order" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger">></div>
             <div class="form-group">
                 <label asp-for="ClientName" class="control-label"></label>
                 <input asp-for="ClientName" class="form-control" />
@@ -27,36 +27,36 @@
             <div class="form-group">
                 <label asp-for="PayMethodos" class="control-label"></label>
                 <select asp-for="PayMethodos" asp-items="@Html.GetEnumSelectList<PayMethodos>()"></select>
-              
+
                 <span asp-validation-for="PayMethodos" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FirstDish" class="control-label"></label>
-                <input asp-for="FirstDish" class="form-control" />
+                <input asp-for="FirstDish" class="form-control" id="fdish" />
                 <span asp-validation-for="FirstDish" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SecondDish" class="control-label"></label>
-                <input asp-for="SecondDish" class="form-control" />
+                <input asp-for="SecondDish" class="form-control" id="sdish" />
                 <span asp-validation-for="SecondDish" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
+                <input asp-for="Price" class="form-control" id="txtunitPrice" type="text" value="0.00" name="UnitPrice" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Amount" class="control-label"></label>
-                <input asp-for="Amount" class="form-control" />
+                <input asp-for="Amount" class="form-control" id="txtAmount" type="text" value="0.00" name="Amount" />
                 <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TotalPrice" class="control-label"></label>
-                <input asp-for="TotalPrice" class="form-control" />
+                <input asp-for="TotalPrice" class="form-control" id="txtTotalPrice" type="text" name="TotalPrice" onchange="CalculateTotal" />
                 <span asp-validation-for="TotalPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" onclick="javascript:return check()" />
             </div>
         </form>
     </div>
@@ -65,4 +65,10 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+
+
+
+
+
 

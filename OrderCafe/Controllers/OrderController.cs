@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using OrderCafe.Models.DataBase;
 using OrderCafe.Service;
 using System;
@@ -33,11 +34,30 @@ namespace OrderCafe.Controllers
 
             return View();
         }
-        [HttpPost] 
+        [HttpPost]
         public IActionResult Create(Order model)
         {
-           var or= service.AddOrder(model);
-            return RedirectToAction("Details", new {id=or});
+            
+           
+            if (ModelState.IsValid)
+            {
+                var or = service.AddOrder(model);
+                return RedirectToAction("Index");
+                if (!string.IsNullOrWhiteSpace(or))
+                {
+                    ModelState.AddModelError(null, or);
+                }
+                
+
+            }
+            if (string.IsNullOrWhiteSpace(model.FirstDish + model.SecondDish))
+            {
+                ModelState.AddModelError("", "Хоча б одне поле повинно бути заповнене 'FullName' або 'NikName'");
+            }
+
+            //TempData["Error"] = string.Join(" ", ModelState.Values.SelectMany(x => x.Errors.Select(e => e.ErrorMessage)));
+
+            return View(model);
         }
         public IActionResult Edit(string id)
         {
