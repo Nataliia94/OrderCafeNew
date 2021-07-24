@@ -13,3 +13,13 @@ function check() {
         return false;
     }
 }
+function mult(value) {
+    var price, amount, total;
+
+    price = $('#txtunitPrice').value;
+    amount = $('#txtAmount').value;
+    total = price * amount;
+    document.getElementById('txtTotalPrice').value = total;
+
+
+}

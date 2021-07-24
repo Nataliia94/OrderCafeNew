@@ -50,10 +50,7 @@ namespace OrderCafe.Controllers
                 
 
             }
-            if (string.IsNullOrWhiteSpace(model.FirstDish + model.SecondDish))
-            {
-                ModelState.AddModelError("", "Хоча б одне поле повинно бути заповнене 'FullName' або 'NikName'");
-            }
+           
 
             //TempData["Error"] = string.Join(" ", ModelState.Values.SelectMany(x => x.Errors.Select(e => e.ErrorMessage)));
 
@@ -75,9 +72,17 @@ namespace OrderCafe.Controllers
         [HttpPost]
         public IActionResult Edit(string id, Order model)
         {
-            service.UpdateOrder(id, model);
-            return RedirectToAction("Index");
-            
+            if (ModelState.IsValid)
+            {
+               var or_= service.UpdateOrder(id, model);
+                return RedirectToAction("Index");
+                if (!string.IsNullOrWhiteSpace(or_))
+                {
+                    ModelState.AddModelError(null, or_);
+                }
+            }
+            return View(model);
+
         }
         public IActionResult Delete(string id)
         {

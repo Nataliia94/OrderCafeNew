@@ -1,4 +1,5 @@
 ﻿@model OrderCafe.Models.DataBase.Order
+@using OrderCafe.Models.DataBase
 
 @{
     ViewData["Title"] = "Edit";
@@ -24,17 +25,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="PayMethodos" class="control-label"></label>
-                <input asp-for="PayMethodos" class="form-control" />
+                <select asp-for="PayMethodos" asp-items="@Html.GetEnumSelectList<PayMethodos>()"></select>
+
                 <span asp-validation-for="PayMethodos" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FirstDish" class="control-label"></label>
-                <input asp-for="FirstDish" class="form-control" />
+                <input asp-for="FirstDish" class="form-control" id="fdish" />
                 <span asp-validation-for="FirstDish" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SecondDish" class="control-label"></label>
-                <input asp-for="SecondDish" class="form-control" />
+                <input asp-for="SecondDish" class="form-control" id="sdish" />
                 <span asp-validation-for="SecondDish" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -53,7 +55,7 @@
                 <span asp-validation-for="TotalPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" onclick="javascript:return check()" />
             </div>
         </form>
     </div>
