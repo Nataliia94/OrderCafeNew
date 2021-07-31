@@ -5,21 +5,17 @@
 // Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
     // for details on configuring this project to bundle and minify static web assets.
     // Write your JavaScript code.
-function check() {
-    var fname = $('#fdish').val();
-    var lname = $('#sdish').val();
-    if (fname == "" && lname == "") {
-        alert("Потрібно вибрати одну із позицій FirstDish або SecondDish");
-        return false;
-    }
-}
-function mult(value) {
-    var price, amount, total;
-
-    price = $('#txtunitPrice').value;
-    amount = $('#txtAmount').value;
-    total = price * amount;
-    document.getElementById('txtTotalPrice').value = total;
 
 
-}
+        function sum() {
+               var amount = document.getElementById('txtAmount').value;
+               var price = document.getElementById('txtunitPrice').value;
+               var result = parseFloat(amount) * parseFloat(price);
+               if (!isNaN(result)) {
+                   document.getElementById('txtTotalPrice').value = result;
+               }
+         }
+        
+
+
+   

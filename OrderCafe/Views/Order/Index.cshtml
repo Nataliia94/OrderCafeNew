@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ClientName)
+                @Html.DisplayNameFor(model => model.FullClientName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PhoneNumber)
@@ -22,11 +22,9 @@
                 @Html.DisplayNameFor(model => model.PayMethodos)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstDish)
+                @Html.DisplayNameFor(model => model.ComplexDish)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SecondDish)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
@@ -44,7 +42,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ClientName)
+                    @Html.DisplayFor(modelItem => item.FullClientName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.PhoneNumber)
@@ -53,11 +51,9 @@
                     @Html.DisplayFor(modelItem => item.PayMethodos)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FirstDish)
+                    @Html.DisplayFor(modelItem => item.ComplexDish)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SecondDish)
-                </td>
+                
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
@@ -68,11 +64,11 @@
                     @Html.DisplayFor(modelItem => item.TotalPrice)
                 </td>
                 <td>
-                    <a asp-controller="Order" asp-action="Edit" asp-route-id="@item.ClientName" class=" btn btn-success ">Edit</a>
+                    <a asp-controller="Order" asp-action="Edit" asp-route-id="@item.FullClientName" class=" btn btn-success ">Edit</a>
                     @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
-                    <a asp-controller="Order" asp-action="Details" asp-route-id="@item.ClientName" class=" btn btn-success ">Deatails</a>
+                    <a asp-controller="Order" asp-action="Details" asp-route-id="@item.FullClientName" class=" btn btn-success ">Deatails</a>
                     @*@Html.ActionLink("Details", "Details", new { id=item.ClientName }) |*@
-                    <a asp-controller="Order" asp-action="Delete" asp-route-id="@item.ClientName" class=" btn btn-success ">Delete</a>
+                    <a asp-controller="Order" asp-action="Delete" asp-route-id="@item.FullClientName" class=" btn btn-success ">Delete</a>
                     @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
                 </td>
             </tr>

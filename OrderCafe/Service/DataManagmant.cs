@@ -14,10 +14,10 @@ namespace OrderCafe.Service
             _orders.Add(new Order
             {
 
-                ClientName = "ClientA",
+                FullClientName = "ClientA",
                 PhoneNumber = "63747484848",
-                FirstDish = "Meat with potato",
-                SecondDish = "Soup",
+                ComplexDish = "Meat with potato",
+                
                 Price = 50,
                 Amount = 3,
                 TotalPrice = 150
@@ -27,10 +27,10 @@ namespace OrderCafe.Service
             _orders.Add(new Order
             {
 
-                ClientName = "ClientB",
+                FullClientName = "ClientB",
                 PhoneNumber = "63747484848",
-                FirstDish = "Meat with potato",
-                SecondDish = "",
+                ComplexDish = "Soup",
+                
                 Price = 50,
                 Amount = 3,
                 TotalPrice = 150
@@ -39,10 +39,9 @@ namespace OrderCafe.Service
             _orders.Add(new Order
             {
 
-                ClientName = "ClientC",
+                FullClientName = "ClientC",
                 PhoneNumber = "63747484848",
-                FirstDish = "",
-                SecondDish = "Meat with potato",
+                ComplexDish="Rice with vegetables",
                 Price = 50,
                 Amount = 3,
                 TotalPrice = 150
@@ -62,27 +61,26 @@ namespace OrderCafe.Service
 
         public Order GetOrder(string number)
         {
-            return _orders.SingleOrDefault(x => x.ClientName.Equals(number, StringComparison.InvariantCultureIgnoreCase));
+            return _orders.SingleOrDefault(x => x.FullClientName.Equals(number, StringComparison.InvariantCultureIgnoreCase));
         }
 
         public string AddOrder(Order order)
         {
             _orders.Add(order);
-            return order.ClientName;
+            return order.FullClientName;
         }
 
         public string UpdateOrder(string orderNumber, Order model)
         {
             var order = GetOrder(orderNumber);
-            order.ClientName = model.ClientName;
+            order.FullClientName = model.FullClientName;
             order.PhoneNumber = model.PhoneNumber;
             order.PayMethodos = model.PayMethodos;
-            order.FirstDish = model.FirstDish;
-            order.SecondDish = model.SecondDish;
+            order.ComplexDish = model.ComplexDish;
             order.Price = model.Price;
             order.Amount = model.Amount;
             order.TotalPrice = model.TotalPrice;
-            return model.ClientName;
+            return model.FullClientName;
         }
 
         public void DeleteOrder(string orderNumber)

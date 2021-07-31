@@ -12,10 +12,10 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ClientName)
+            @Html.DisplayNameFor(model => model.FullClientName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ClientName)
+            @Html.DisplayFor(model => model.FullClientName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.PhoneNumber)
@@ -30,17 +30,12 @@
             @Html.DisplayFor(model => model.PayMethodos)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstDish)
+            @Html.DisplayNameFor(model => model.ComplexDish)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstDish)
+            @Html.DisplayFor(model => model.ComplexDish)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SecondDish)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SecondDish)
-        </dd>
+        
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Price)
         </dt>
@@ -61,7 +56,7 @@
         </dd>
     </dl>
     
-    <form asp-action="Delete" asp-controller="Order" asp-route-id="@Model.ClientName" asp-route-isdelete="true" method="post">
+    <form asp-action="Delete" asp-controller="Order" asp-route-id="@Model.FullClientName" asp-route-isdelete="true" method="post">
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

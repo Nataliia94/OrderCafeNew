@@ -9,14 +9,61 @@
 
 <h4>Order</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" asp-controller="Order" asp-route-id="@Model.ClientName" method="post">
+<div class="container">
+    
+        <form asp-action="Edit" asp-controller="Order" asp-route-id="@Model.FullClientName" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row g-5">
+                <div class="col-sm-6">
+                    <h4>Enter Your Name</h4>
+                    <label asp-for="FullClientName" class="control-label"></label>
+                    <input asp-for="FullClientName" id="firsName" type="text" class="form-control" placeholder="Enter your Name" />
+                    <span asp-validation-for="FullClientName" class="text-danger"></span>
+                </div>
+                <div class="col-sm-6">
+                    <h4>Enter Your Phone Number</h4>
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input id="firsName" asp-for="PhoneNumber" type="text" class="form-control" placeholder="Enter your Phone Number" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="col-sm-6">
+                    <h4>ComplexDish</h4>
+                    <input id="complexDish" asp-for="ComplexDish" type="text" class="form-control" placeholder="Enter dish" />
+                    <span asp-validation-for="ComplexDish" class="text-danger"></span>
+
+                </div>
+
+                <div class="col-sm-6">
+                    <h4>Payment type:</h4>
+                    <label asp-for="PayMethodos" class="control-label"></label>
+                    <select asp-for="PayMethodos" asp-items="@Html.GetEnumSelectList<PayMethodos>()"></select>
+
+                    <span asp-validation-for="PayMethodos" class="text-danger"></span>
+                </div>
+                <hr class="my-4" />
+                <div class="col-sm-6">
+                    <h4>Price</h4>
+                    <label asp-for="Price" class="control-label"></label>
+                    <input id="txtunitPrice" type="text" asp-for="Price" value="0.00" name="UnitPrice" class="form-control" onkeyup="sum()" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="col-sm-6">
+                    <h4>Amount</h4>
+                    <label asp-for="Amount" class="control-label"></label>
+                    <input id="txtAmount" asp-for="Amount" type="text" value="0.00" name="Amount" class="form-control" onkeyup="sum()" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <div class="col-sm-6">
+                    <h4>Total Price</h4>
+                    <label asp-for="TotalPrice" class="control-label"></label>
+                    <input id="txtTotalPrice" type="text" asp-for="TotalPrice" value="0.00" name="TotalPrice" class="form-control" />
+                    <span asp-validation-for="TotalPrice" class="text-danger"></span>
+                </div>
+                @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ClientName" class="control-label"></label>
-                <input asp-for="ClientName" class="form-control" />
-                <span asp-validation-for="ClientName" class="text-danger"></span>
+                <label asp-for="FullClientName" class="control-label"></label>
+                <input asp-for="FullClientName" class="form-control" />
+                <span asp-validation-for="FullClientName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PhoneNumber" class="control-label"></label>
@@ -30,15 +77,11 @@
                 <span asp-validation-for="PayMethodos" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FirstDish" class="control-label"></label>
-                <input asp-for="FirstDish" class="form-control" id="fdish" />
-                <span asp-validation-for="FirstDish" class="text-danger"></span>
+                <label asp-for="ComplexDish" class="control-label"></label>
+                <input asp-for="ComplexDish" class="form-control" id="fdish" />
+                <span asp-validation-for="ComplexDish" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="SecondDish" class="control-label"></label>
-                <input asp-for="SecondDish" class="form-control" id="sdish" />
-                <span asp-validation-for="SecondDish" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
                 <input asp-for="Price" class="form-control" />
@@ -53,12 +96,15 @@
                 <label asp-for="TotalPrice" class="control-label"></label>
                 <input asp-for="TotalPrice" class="form-control" />
                 <span asp-validation-for="TotalPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" onclick="javascript:return check()" />
+            </div>*@
+
+                <div class="col-sm-6">
+                    <input type="submit" value="Save" class="btn btn-primary" asp-controller="order" method="post" />
+               
+                </div>
             </div>
         </form>
-    </div>
+    
 </div>
 
 <div>
